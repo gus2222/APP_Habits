@@ -4,7 +4,9 @@ interface ProgressBarProps{
 
 
 export function ProgressBar(props: ProgressBarProps){
+    console.log(props.progress)
     return(
+        
         <div className='h-3 rounded-xl bg-zinc-700 w-full mt-4'>
             <div
             role="progressbar"
@@ -15,7 +17,7 @@ export function ProgressBar(props: ProgressBarProps){
                 width: `${props.progress}%`
             }}
             />
-
+            
         </div>
     )
 }
