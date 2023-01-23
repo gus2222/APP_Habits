@@ -2,9 +2,9 @@ import { View, Text , ScrollView, Alert} from "react-native";
 import { generateRangeDatesFromYearStart } from "../utils/generate-range-between-dates";
 import { DAY_SIZE, HabitDay } from "../components/HabitDay";
 import { Header } from "../components/Header";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { api } from "../lib/axios";
-import { useState , useEffect} from "react";
+import { useState , useCallback} from "react";
 import Loading from "../components/Loading";
 import dayjs from "dayjs";
 
@@ -41,9 +41,9 @@ export function Home(){
         }
     }
 
-    useEffect(()=>{
+    useFocusEffect(useCallback(()=>{
         fetchData();
-    },[])
+    },[]))
 
     if(loading){
         return(
@@ -70,7 +70,7 @@ export function Home(){
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{paddingBottom:100}}
             >
-                //renderiza se summary existir
+                {/* //renderiza se summary existir */}
             {   summary &&
                 <View className="flex-row flex-wrap">
 
